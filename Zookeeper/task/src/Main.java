@@ -1,9 +1,7 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         String camel = """
                 Switching on the camera in the camel habitat...
                  ___.-''''-.
@@ -125,20 +123,19 @@ public class Main {
                 (" ~----( ~   Y.  )
                 It looks like we will soon have more rabbits!""";
 
-        List<String> animalList = new ArrayList<>();
+        String[] animals = {camel, lion, deer, goose, bat, rabbit};
 
-        animalList.add(camel);
-        animalList.add(lion);
-        animalList.add(deer);
-        animalList.add(goose);
-        animalList.add(bat);
-        animalList.add(rabbit);
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter the number of the habitat you would like to view:");
-        int index = Integer.parseInt(scanner.nextLine());
-        System.out.println(animalList.get(index));
-        System.out.println("""
-                ---
-                You've reached the end of the program. To check another habitat, please restart the watcher.""");
+        while (true) {
+            System.out.println("Please enter the number of the habitat you would like to view: ");
+            String input = scanner.nextLine();
+            if ("exit".equals(input)) {
+                System.out.println("See you later!");
+                break;
+            }
+            int index = Integer.parseInt(input);
+            System.out.println(animals[index]);
+        }
     }
 }
